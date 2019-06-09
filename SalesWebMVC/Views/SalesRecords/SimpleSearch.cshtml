@@ -78,15 +78,15 @@
         $(function () {
             $('#minDate').datetimepicker({
                 format: 'L',
-                locale: 'en'
+                locale: 'en',
+                defaultDate: moment("@ViewData["minDate"]")
             });
             $('#maxDate').datetimepicker({
                 format: 'L',
                 locale: 'en',
+                defaultDate: moment("@ViewData["maxDate"]"),
                 useCurrent: false
             });
-            $('#minDate').data("DateTimePicker").defaultDate(moment("@ViewData["minDate"]"));
-            $('#maxDate').data("DateTimePicker").defaultDate(moment("@ViewData["maxDate"]"));
             $('#minDate').on("dp.change", function (e) {
                 $('#maxDate').data("DateTimePicker").minDate(e.date);
             });
