@@ -12,11 +12,11 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="minDate">Min Date</label>
-                    <input type="text" id="minDate" class="form-control" name="minDate" value="@ViewData["minDate"]" />
+                    <input type="text" id="minDate" class="form-control" name="minDate"/>
                 </div>
                 <div class="form-group">
                     <label for="maxDate">Max Date</label>
-                    <input type="text" id="maxDate" class="form-control" name="maxDate" value="@ViewData["maxDate"]" />
+                    <input type="text" id="maxDate" class="form-control" name="maxDate"/>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -85,6 +85,8 @@
                 locale: 'en',
                 useCurrent: false
             });
+            $('#minDate').data("DateTimePicker").defaultDate(moment("@ViewData["minDate"]"));
+            $('#maxDate').data("DateTimePicker").defaultDate(moment("@ViewData["maxDate"]"));
             $('#minDate').on("dp.change", function (e) {
                 $('#maxDate').data("DateTimePicker").minDate(e.date);
             });
