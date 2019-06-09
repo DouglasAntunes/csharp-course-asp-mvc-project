@@ -1,9 +1,9 @@
-﻿using SalesWebMVC.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Services
 {
@@ -28,8 +28,8 @@ namespace SalesWebMVC.Services
                 result = result.Where(x => x.Date <= maxDate.Value);
             }
             return await result
-                .Include(x=>x.Seller)
-                .Include(x=>x.Seller.Department)
+                .Include(x => x.Seller)
+                .Include(x => x.Seller.Department)
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
         }
@@ -49,7 +49,7 @@ namespace SalesWebMVC.Services
                 .Include(x => x.Seller)
                 .Include(x => x.Seller.Department)
                 .OrderByDescending(x => x.Date)
-                .GroupBy(x=> x.Seller.Department)
+                .GroupBy(x => x.Seller.Department)
                 .ToListAsync();
         }
     }
