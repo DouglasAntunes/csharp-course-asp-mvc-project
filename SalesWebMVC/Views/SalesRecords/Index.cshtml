@@ -14,13 +14,13 @@
                 <div class="form-group">
                     <label for="minDate" class="col-lg-2 control-label">Min Date</label>
                     <div class="col-lg-10">
-                        <input type="text" name="minDate" class="form-control bootstrapdatepicker"/>
+                        <input type="text" name="minDate" class="form-control bootstrapdatepicker" id="simpleMinDate" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="maxDate" class="col-lg-2 control-label">Max Date</label>
                     <div class="col-lg-10">
-                        <input type="text" name="maxDate" class="form-control bootstrapdatepicker"/>
+                        <input type="text" name="maxDate" class="form-control bootstrapdatepicker" id="simpleMaxDate" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,13 +40,13 @@
                 <div class="form-group">
                     <label for="minDate" class="col-lg-2 control-label">Min Date</label>
                     <div class="col-lg-10">
-                        <input type="text" name="minDate" class="form-control bootstrapdatepicker"/>
+                        <input type="text" name="minDate" class="form-control bootstrapdatepicker" id="groupMinDate" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="maxDate" class="col-lg-2 control-label">Max Date</label>
                     <div class="col-lg-10">
-                        <input type="text" name="maxDate" class="form-control bootstrapdatepicker" />
+                        <input type="text" name="maxDate" class="form-control bootstrapdatepicker" id="groupMaxDate" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -80,6 +80,24 @@
             $('.bootstrapdatepicker').datetimepicker({
                 format: 'L',
                 locale: 'en'
+            });
+            $('#simpleMaxDate').data("DateTimePicker").options({
+                useCurrent: false
+            });
+            $('#groupMaxDate').data("DateTimePicker").options({
+                useCurrent: false
+            });
+            $('#simpleMinDate').on("dp.change", function (e) {
+                $('#simpleMaxDate').data("DateTimePicker").minDate(e.date);
+            });
+            $('#simpleMaxDate').on("dp.change", function (e) {
+                $('#simpleMinDate').data("DateTimePicker").maxDate(e.date);
+            });
+            $('#groupMinDate').on("dp.change", function (e) {
+                $('#groupMaxDate').data("DateTimePicker").minDate(e.date);
+            });
+            $('#groupMaxDate').on("dp.change", function (e) {
+                $('#groupMinDate').data("DateTimePicker").maxDate(e.date);
             });
         });
     </script>
