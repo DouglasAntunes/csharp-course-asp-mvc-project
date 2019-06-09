@@ -72,3 +72,12 @@
         });
     </script>
 }
+@section StyleSheets {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+              asp-fallback-href="~/lib/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    </environment>
+}
